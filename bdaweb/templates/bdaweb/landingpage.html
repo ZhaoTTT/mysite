@@ -1,0 +1,50 @@
+{% extends "bdaweb/base.html" %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  min-height: 30%;
+}
+
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+}
+</style>
+{% block content1 %}
+{% comment %} <div class="bgimg-1 w3-display-container w3-opacity-min w3-white" id="home" align="center"> {% endcomment %}
+    Welcome back, {{user.userid}}!
+{% comment %} </div> {% endcomment %}
+{% endblock %}
+{% block content2 %}
+<span class="w3-center w3-padding-large w3-white w3-xlarge w3-wide w3-animate-opacity">What you may like:</span>
+
+{% if itemCFresult %}
+  <ul>
+    {% for itemRec in itemCFresult %}
+        <li>{{ itemRec.title }}</li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No polls are available.</p>
+{% endif %}
+
+{% endblock %}
+{% block content3 %}
+<span class=" w3-opacity-min w3-center w3-display-middle w3-padding-large w3-white w3-xlarge w3-wide w3-animate-opacity" style="white-space:nowrap;">What's popular now:</span><br/><br/>
+{% endblock %}
+</br>
+{% block content4 %}
+<span class=" w3-opacity-min w3-center w3-display-middle w3-padding-large w3-white w3-xlarge w3-wide w3-animate-opacity" style="white-space:nowrap;">Players like you also like:</span>
+{% endblock %}

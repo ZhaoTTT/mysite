@@ -1,0 +1,107 @@
+{% comment %} <html>
+<head>
+    <title>{% block title %}ZR's Website{% endblock %}</title>
+</head>
+<body>
+    <div id="content", name="content">
+        {% block content %}
+        <h1>Test Page</h1>
+        {% endblock %}
+    </div>
+</body>
+
+</html> {% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% block title %}
+<title>Welcome to 12Studio</title>
+{% endblock %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="{%static 'css/base.css' %}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body, html {
+  height: 100%;
+  color: #777;
+  line-height: 1.8;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+  min-height: 30%;
+}
+
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+#footer
+{
+    color: White;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 0;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    clear: both;
+}
+}
+
+</style>
+
+<body id='bg' style="background-image:url('{% static '/img/gamebg.png'%}'); background-repeat:no-repeat; background-size:100%;"> 
+
+<!-- First Parallax Image with Logo Text -->
+{% comment %} <img id="bkgroundpic" src="{% static '/img/logo.png' %}" alt="movie image" width="50" height="50"> {% endcomment %}
+
+<div class="bgimg-1 w3-display-container w3-opacity-min" id="home" align="center">
+  <div class="w3-display-middle" style="white-space:nowrap;">
+    <span class="w3-center w3-padding-large w3-white w3-xxlarge w3-wide w3-animate-opacity">{% block content1 %}Welcome <span class="w3-hide-small">to </span>10th PlayStation{% endblock %}</span><br/><br/>
+    {% block content2 %}<span class="w3-center w3-padding-large  w3-xxlarge w3-wide w3-animate-opacity">Keep calm and game on.</span>{% endblock %}
+    
+    <span>There are {{num_users}} users</span>
+
+  </div>
+</div>
+
+
+<div align="center">
+{% block content3 %}
+    <form class="form-signin " action="{% url 'bdaweb:reg'%}" method="GET">  <!--{% url 'bdaweb:reg'%}-->
+    {% csrf_token %}
+      {% comment %} <img src="{% static "/img/logo.png" %}" alt="My image" width="200" height="100"> {% endcomment %}
+      <h1 class="h3 mb-3 font-weight-normal">Please Log in</h1>
+      <label for="userid" class="sr-only">User ID</label>
+      <input type="text" id="userid" class="form-control" value="{{ inputUserid }}" placeholder="User ID" required autofocus>
+
+      {% comment %} <a href="http://127.0.0.1:8000/home/"><button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button></a> {% endcomment %}
+      <input type="submit" value="Sign in">
+      <p>Don't have an accoount? Create one <a href="/home">here</a></p>
+        {% comment %} <p class="lead">
+          <a href="http://127.0.0.1:8000/home/" class="btn btn-lg btn-secondary btn btn-success">Log in</a>
+        </p> {% endcomment %}
+    </form>
+    
+    {% comment %} <input type="submit" value="{% trans 'Log in' %}"> {% endcomment %}
+{% endblock %}
+</div>
+<br/><br/>
+
+<div align="center">
+    {% block content4 %}
+    {% endblock %}
+</div>
+
+
+</body> 
+<div class="footer w3-opacity-min" id="footer">Produced by 12Studio.</div>
+
+</html>
